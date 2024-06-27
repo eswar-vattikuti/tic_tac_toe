@@ -1,0 +1,149 @@
+/* static/styles.css */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 2.5em;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    cursor: pointer;
+    background-color: #fff;
+    border: 2px solid #000;
+    transition: background-color 0.3s ease;
+}
+
+.cell.x {
+    color: #ff4c4c;
+}
+
+.cell.circle {
+    color: #4c6eff;
+}
+
+.cell:hover {
+    background-color: #f0f0f0;
+}
+
+.winning-message {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+}
+
+.winning-message.show {
+    display: flex;
+}
+
+.winning-message button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border: none;
+    background-color: #ff4c4c;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.winning-message button:hover {
+    background-color: #e64545;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    background-color: #4c6eff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background-color: #3a4fcc;
+}
+
+/* Scores Section */
+.scores {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+}
+
+.scores div {
+    padding: 5px 10px;
+    border: 1px solid #333;
+    background-color: #fff;
+}
+
+/* Modern Theme */
+body.modern {
+    background-color: #222;
+    color: #fff;
+}
+
+body.modern .cell {
+    background-color: #333;
+    border: 2px solid #444;
+}
+
+body.modern .cell:hover {
+    background-color: #444;
+}
+
+body.modern .winning-message {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+body.modern .theme-toggle {
+    background-color: #ff4c4c;
+}
+
+body.modern .theme-toggle:hover {
+    background-color: #e64545;
+}
+
+body.modern .scores div {
+    border: 1px solid #fff;
+    background-color: #333;
+    color: #fff;
+}
+

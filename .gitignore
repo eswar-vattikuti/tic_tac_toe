@@ -1,1 +1,55 @@
 app.log
+
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
+
+# Ignore IDE-specific files
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Ignore Eclipse-specific files
+.project
+.classpath
+.settings/
+
+# Ignore NetBeans-specific files
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+
+# Ignore OS-specific files
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Ignore temporary files
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+
+# Ignore log files
+*.log
+
+# Ignore archives
+*.zip
+*.tar.gz
+*.rar
+*.7z
+*.gz
+*.bz2
+

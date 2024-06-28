@@ -75,6 +75,12 @@ sudo systemctl enable tic-tac-toe.service
 sudo systemctl start tic-tac-toe.service
 ```
 
+### Install using Gradle
+
+```plaintext
+./gradlew install
+```
+
 ## Usage
 
 Open a web browser and navigate to your server's IP address and port (default is `5000`). For example:

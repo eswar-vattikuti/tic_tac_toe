@@ -8,6 +8,12 @@ plugins {
     id 'base'
 }
 
+def getUserAndGroup() {
+    def user = System.getProperty('user.name')
+    def group = "root" // Typically, the root group is used, but this can be dynamically determined if necessary
+    return [user, group]
+}
+
 task installDependencies(type: Exec) {
     description = 'Install Python dependencies'
     commandLine 'pip3', 'install', '-r', 'requirements.txt'
@@ -16,6 +22,7 @@ task installDependencies(type: Exec) {
 task setupService(type: Exec) {
     description = 'Set up systemd service'
     doLast {
+        def (user, group) = getUserAndGroup()
         def serviceFile = file('tic-tac-toe.service')
         serviceFile.text = """
         [Unit]
@@ -23,8 +30,8 @@ task setupService(type: Exec) {
         After=network.target
 
         [Service]
-        User=root
-        Group=root
+        User=${user}
+        Group=${group}
         WorkingDirectory=${projectDir}
         ExecStart=/usr/bin/python3 ${projectDir}/app.py
         Restart=always
@@ -32,10 +39,18 @@ task setupService(type: Exec) {
         [Install]
         WantedBy=multi-user.target
         """
-        commandLine 'mv', serviceFile.absolutePath, '/etc/systemd/system/tic-tac-toe.service'
-        commandLine 'systemctl', 'daemon-reload'
-        commandLine 'systemctl', 'enable', 'tic-tac-toe.service'
-        commandLine 'systemctl', 'start', 'tic-tac-toe.service'
+        exec {
+            commandLine 'sudo', 'mv', serviceFile.absolutePath, '/etc/systemd/system/tic-tac-toe.service'
+        }
+        exec {
+            commandLine 'sudo', 'systemctl', 'daemon-reload'
+        }
+        exec {
+            commandLine 'sudo', 'systemctl', 'enable', 'tic-tac-toe.service'
+        }
+        exec {
+            commandLine 'sudo', 'systemctl', 'start', 'tic-tac-toe.service'
+        }
     }
 }
 
